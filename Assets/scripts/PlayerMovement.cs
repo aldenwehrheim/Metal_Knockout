@@ -8,9 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float angle;
     public float input;
-    private GameObject attackarea = default;
-    private bool attacking = false;
-    private float timeToattack = 0.25f;
+  
     private float timer = 0f;
 
     [SerializeField] private Animator animator;
@@ -19,32 +17,10 @@ public class PlayerMovement : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
     
-    void start()
-    {
-        attackarea = transform.GetChild(0).gameObject;
-    }
 
  async void Update()
     {
         angle = transform.eulerAngles.z;
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Attack();
-        }
-
-        if (attacking)
-        {
-            timer += Time.deltaTime;
-
-            if(timer >= timeToattack)
-            {
-                timer = 0;
-                attacking = false;
-                attackarea.SetActive(attacking);
-            }
-        }
-        
         
         if (!isWobbling)
         {
@@ -116,11 +92,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Attack()
-    {
-        attacking = true;
-        attackarea.SetActive(attacking);
-    }
 
     void FixedUpdate()
     {
