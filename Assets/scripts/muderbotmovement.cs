@@ -9,7 +9,8 @@ public class muderbotmovement : MonoBehaviour
     public float angle;
     [SerializeField] private Animator animator;
     bool isWobbling = false;
-    
+    public float health = 4;
+    bool isDead = false;
 
     private Transform target;
 
@@ -20,10 +21,13 @@ public class muderbotmovement : MonoBehaviour
 
     async void Update()
     {
-        
+        if (health <= 0)
+        {
+         isDead = true;
+        }
         angle = transform.eulerAngles.z;
 
-        if (angle >= 60 && angle <= 80 || angle >= 260 && angle <= 280)
+        if (!isDead && (angle >= 60 && angle <= 80 || angle >= 260 && angle <= 280))
         {
         
          if (!isWobbling)
@@ -40,13 +44,13 @@ public class muderbotmovement : MonoBehaviour
                 float wobbleForce2 = Random.Range(1f,3f);
                 murderBotbody.linearVelocity = Vector2.up * wobbleForce2;
                 murderBotbody.AddTorque(Random.Range(-100f, 100f));
-
+                
                 await Awaitable.WaitForSecondsAsync(1.0f);
                 
                 float wobbleForce3 = Random.Range(1f,3f);
                 murderBotbody.linearVelocity = Vector2.up * wobbleForce3;
                 murderBotbody.AddTorque(Random.Range(-100f, 100f));
-                
+              
                 await Awaitable.WaitForSecondsAsync(2.0f); 
                 transform.rotation = Quaternion.Euler(0, 0, 0);
 
@@ -55,12 +59,12 @@ public class muderbotmovement : MonoBehaviour
 
      
         }
-        else if (!isWobbling)
+        else if (!isWobbling && !isDead)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
 
-                if (isWobbling == false)
+        if (isWobbling == false)
         {
             animator.SetBool("isMwalking",true);
             
@@ -69,6 +73,10 @@ public class muderbotmovement : MonoBehaviour
         {
             animator.SetBool("isMwalking",false);
         }
-        
+        if (isDead == true)
+        {
+            animator.SetBool("isMwalking",false);
+            animator.SetBool("Mdead",true);
+        }
     }
 }

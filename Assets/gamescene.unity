@@ -452,17 +452,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.008243561, y: -0.004098922}
+  m_Offset: {x: 0.008244514, y: -0.004098892}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 21.177986, y: 1.9764985}
+    newSize: {x: 20.396547, y: 1.8863319}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 21.035316, y: 1.9760461}
+  m_Size: {x: 20.374098, y: 1.9760461}
   m_EdgeRadius: 0
 --- !u!212 &117031237
 SpriteRenderer:
@@ -518,7 +518,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 21.177986, y: 1.9764985}
+  m_Size: {x: 20.396547, y: 1.8863319}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -533,7 +533,7 @@ Transform:
   m_GameObject: {fileID: 117031235}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0679, y: -1.61, z: 0}
+  m_LocalPosition: {x: -0.0378, y: -1.6551, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -726,7 +726,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22511099a500ae47ac7f3b8bb226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::attackarea
-  angle: 0
 --- !u!1 &491095279
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,7 +859,7 @@ Transform:
   m_GameObject: {fileID: 491095279}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.46, y: 1.78, z: 0}
+  m_LocalPosition: {x: -9.4, y: 1.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -925,6 +924,7 @@ MonoBehaviour:
   speed: 3.5
   angle: 0
   animator: {fileID: 757837939}
+  health: 4
 --- !u!61 &757837941
 BoxCollider2D:
   m_ObjectHideFlags: 0
