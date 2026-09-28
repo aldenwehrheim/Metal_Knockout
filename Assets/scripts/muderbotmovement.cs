@@ -7,9 +7,9 @@ public class muderbotmovement : MonoBehaviour
     public Rigidbody2D murderBotbody;
     public float speed;
     public float angle;
+    public int health = 4;
     [SerializeField] private Animator animator;
     bool isWobbling = false;
-    public float health = 4;
     bool isDead = false;
 
     private Transform target;
@@ -78,5 +78,10 @@ public class muderbotmovement : MonoBehaviour
             animator.SetBool("isMwalking",false);
             animator.SetBool("Mdead",true);
         }
+    }
+
+    public void TakeDamage()
+    {
+        health -= 1;
     }
 }
