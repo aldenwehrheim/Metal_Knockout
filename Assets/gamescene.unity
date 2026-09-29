@@ -925,8 +925,8 @@ MonoBehaviour:
   murderBotbody: {fileID: 757837942}
   speed: 3.5
   angle: 0
-  animator: {fileID: 757837939}
   health: 4
+  animator: {fileID: 757837939}
 --- !u!61 &757837941
 BoxCollider2D:
   m_ObjectHideFlags: 0

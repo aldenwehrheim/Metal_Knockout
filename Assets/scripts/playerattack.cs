@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class playerattack : MonoBehaviour
 {
-   private GameObject attackarea = default;
+   private GameObject attackArea = default;
    private bool attacking = false;
    private float timeToAttack = 0.25f;
    private float timer = 0f;
 
     void Start()
     {
-        attackarea = transform.GetChild(0).gameObject;
+        attackArea = transform.GetChild(0).gameObject;
     }
 
     void Update()
@@ -27,13 +27,13 @@ public class playerattack : MonoBehaviour
             {
                 timer = 0;
                 attacking = false;
-                attackarea.SetActive(attacking);
+                attackArea.SetActive(attacking);
             }
         }
     }
     private void attack()
     {
         attacking = true;
-        attackarea.SetActive(attacking);
+        attackArea.SetActive(attacking);
     }
 }       

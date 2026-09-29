@@ -7,7 +7,6 @@ public class muderbotmovement : MonoBehaviour
     public Rigidbody2D murderBotbody;
     public float speed;
     public float angle;
-    public int health = 4;
     [SerializeField] private Animator animator;
     bool isWobbling = false;
     bool isDead = false;
@@ -17,13 +16,15 @@ public class muderbotmovement : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        Health H = GetComponent<Health>();
     }
 
     async void Update()
     {
-        if (health <= 0)
+        Health H = GetComponent<Health>();
+        if(H.health <= 0)
         {
-         isDead = true;
+          isDead = true;  
         }
         angle = transform.eulerAngles.z;
 
@@ -57,7 +58,7 @@ public class muderbotmovement : MonoBehaviour
                 isWobbling = false;
             }
 
-     
+                
         }
         else if (!isWobbling && !isDead)
         {
@@ -80,8 +81,4 @@ public class muderbotmovement : MonoBehaviour
         }
     }
 
-    public void TakeDamage()
-    {
-        health -= 1;
-    }
 }

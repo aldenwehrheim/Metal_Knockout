@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         playerBody.linearVelocity = new Vector2 (input * speed, playerBody.linearVelocity.y);
-     
+        
     }
 
     
