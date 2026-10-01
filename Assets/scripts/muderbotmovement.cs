@@ -10,6 +10,7 @@ public class muderbotmovement : MonoBehaviour
     [SerializeField] private Animator animator;
     bool isWobbling = false;
     bool isDead = false;
+    
 
     private Transform target;
 
@@ -17,6 +18,7 @@ public class muderbotmovement : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         Health H = GetComponent<Health>();
+        animator.SetBool("isMdead",false);
     }
 
     async void Update()
@@ -77,7 +79,7 @@ public class muderbotmovement : MonoBehaviour
         if (isDead == true)
         {
             animator.SetBool("isMwalking",false);
-            animator.SetBool("Mdead",true);
+            animator.SetBool("isMdead",true);
         }
     }
 
