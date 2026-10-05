@@ -6,6 +6,7 @@ public class playerattack : MonoBehaviour
    private GameObject attackArea = default;
    private bool attacking = false;
    private float timeToAttack = 0.25f;
+   [SerializeField] private Animator animator;
    private float timer = 0f;
 
     void Start()
@@ -27,6 +28,7 @@ public class playerattack : MonoBehaviour
             {
                 timer = 0;
                 attacking = false;
+                // add this back in animator.SetBool("is1punching",false);
                 attackArea.SetActive(attacking);
             }
         }
@@ -35,5 +37,6 @@ public class playerattack : MonoBehaviour
     {
         attacking = true;
         attackArea.SetActive(attacking);
+        animator.SetBool("is1punching",true);
     }
 }       
