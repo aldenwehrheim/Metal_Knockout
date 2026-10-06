@@ -28,8 +28,8 @@ public class playerattack : MonoBehaviour
             {
                 timer = 0;
                 attacking = false;
-                // add this back in animator.SetBool("is1punching",false);
                 attackArea.SetActive(attacking);
+                animator.SetBool("is1punching",false);
             }
         }
     }
