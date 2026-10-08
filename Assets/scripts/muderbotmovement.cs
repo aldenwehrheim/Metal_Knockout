@@ -1,6 +1,7 @@
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class muderbotmovement : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class muderbotmovement : MonoBehaviour
     [SerializeField] private Animator animator;
     bool isWobbling = false;
     bool isDead = false;
+    bool flip = true;
+    public SpriteRenderer spriteRenderer;
     
 
     private Transform target;
@@ -23,10 +26,29 @@ public class muderbotmovement : MonoBehaviour
 
     async void Update()
     {
+        Transform M_pos = GetComponent<Transform>();
+        //Debug.Log("M_pos is " +M_pos.position.x);
+        GameObject Target = GameObject.Find("scrappy_0");
+        var POS = Target.GetComponent<Transform>();
         Health H = GetComponent<Health>();
+        Transform Tf = gameObject.transform;
         if(H.health <= 0)
         {
           isDead = true;  
+        }
+        if (POS.TryGetComponent<Transform> (out Transform pos))
+        {
+            float playerX = pos.position.x;
+            if(playerX > 0)
+            {
+                //no flip
+                spriteRenderer.flipX = true;
+            }
+            else
+            {
+                // yes flip
+                spriteRenderer.flipX = false;
+            }
         }
         angle = transform.eulerAngles.z;
 

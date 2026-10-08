@@ -3,21 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using JetBrains.Annotations;
 
 
 public class attackarea : MonoBehaviour
 {
     public int damage = 1;
-    public GameObject scrappy_0;
     public float angle;
-    private SpriteRenderer SR;
     private void Update()
     {
-        
+        GameObject target = GameObject.Find("scrappy_0");
+        var SR = target.GetComponent<SpriteRenderer>();
         PolygonCollider2D PC = GetComponent<PolygonCollider2D>();
-        SR = GetComponent<SpriteRenderer>();
         Transform Tf = gameObject.transform;
-
+        
+     if (SR == null)
+        {
+            Debug.Log("null");
+        }
+     if (SR.flipX == false || true)
+        {
+            Debug.Log("connected?");
+        }
      if(SR.flipX == true)
         {
          PC.offset = new Vector2(4f,0f);   
