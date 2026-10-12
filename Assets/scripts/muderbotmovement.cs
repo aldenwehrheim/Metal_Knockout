@@ -39,12 +39,13 @@ public class muderbotmovement : MonoBehaviour
         if (POS.TryGetComponent<Transform> (out Transform pos))
         {
             float playerX = pos.position.x;
-            if(playerX > 0)
+            float botX = M_pos.position.x;
+            if((playerX > 0 && botX > playerX)||(playerX < 0 && botX > playerX))
             {
                 //no flip
                 spriteRenderer.flipX = true;
             }
-            else
+            else if ((playerX < 0 && botX < playerX)||(playerX > 0 && botX < playerX))
             {
                 // yes flip
                 spriteRenderer.flipX = false;

@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
-    bool isWobbling = false;
+    public bool isWobbling = false;
 
     public SpriteRenderer spriteRenderer;
     

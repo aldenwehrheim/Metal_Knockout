@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using Unity.Collections.Tests.CoreCLR.TestJobs;
 using UnityEngine;
 
@@ -8,14 +9,19 @@ public class playerattack : MonoBehaviour
    private float timeToAttack = 0.25f;
    [SerializeField] private Animator animator;
    private float timer = 0f;
+   [SerializeField] public PlayerMovement playerMovement;
+   bool Iswobbling;
+   float movement;
 
     void Start()
     {
         attackArea = transform.GetChild(0).gameObject;
+        
     }
 
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             attack();
