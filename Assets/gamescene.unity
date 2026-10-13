@@ -1070,6 +1070,8 @@ MonoBehaviour:
   speed: 3.5
   angle: 0
   animator: {fileID: 757837939}
+  playerT: {fileID: 1550374965}
+  botT: {fileID: 757837944}
   spriteRenderer: {fileID: 757837943}
 --- !u!61 &757837941
 BoxCollider2D:
@@ -1401,6 +1403,7 @@ MonoBehaviour:
   angle: 0
   input: 0
   animator: {fileID: 1550374960}
+  isWobbling: 0
   spriteRenderer: {fileID: 1550374964}
 --- !u!61 &1550374962
 BoxCollider2D:
@@ -1564,6 +1567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::playerattack
   animator: {fileID: 1550374960}
+  playerMovement: {fileID: 1550374961}
 --- !u!1 &1695585866
 GameObject:
   m_ObjectHideFlags: 0

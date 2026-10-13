@@ -42,12 +42,12 @@ public class PlayerMovement : MonoBehaviour
             isWobbling = true;
             animator.SetBool("iswalking",false);
             input = 0;
-
+            animator.SetBool("is1punching",false);
             while (!Input.GetKeyDown(KeyCode.W))
             {
                 await Awaitable.NextFrameAsync();
             }
-                
+                animator.SetBool("is1punching",false);
                 float wobbleForce = Random.Range(1f,3f);
                 playerBody.linearVelocity = Vector2.up * wobbleForce;
                 playerBody.AddTorque(Random.Range(-100f, 100f));
@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
                 float wobbleForce2 = Random.Range(1f,3f);
                 playerBody.linearVelocity = Vector2.up * wobbleForce2;
                 playerBody.AddTorque(Random.Range(-100f, 100f));
-
+                animator.SetBool("is1punching",false);
                     await Awaitable.WaitForSecondsAsync(.5f);
             
             while (!Input.GetKeyDown(KeyCode.W))

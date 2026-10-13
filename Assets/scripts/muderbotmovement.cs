@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,7 +12,11 @@ public class muderbotmovement : MonoBehaviour
     [SerializeField] private Animator animator;
     bool isWobbling = false;
     bool isDead = false;
+    float difference;
     bool flip = true;
+    public Transform playerT;
+    public Transform botT;
+    
     public SpriteRenderer spriteRenderer;
     
 
@@ -61,21 +66,21 @@ public class muderbotmovement : MonoBehaviour
             {
                 isWobbling = true;
 
-                float wobbleForce = Random.Range(1f,3f);
+                float wobbleForce = UnityEngine.Random.Range(1f,3f);
                 murderBotbody.linearVelocity = Vector2.up * wobbleForce;
-                murderBotbody.AddTorque(Random.Range(-100f, 100f));
+                murderBotbody.AddTorque(UnityEngine.Random.Range(-100f, 100f));
                 
                 await Awaitable.WaitForSecondsAsync(1.0f);
                 
-                float wobbleForce2 = Random.Range(1f,3f);
+                float wobbleForce2 = UnityEngine.Random.Range(1f,3f);
                 murderBotbody.linearVelocity = Vector2.up * wobbleForce2;
-                murderBotbody.AddTorque(Random.Range(-100f, 100f));
+                murderBotbody.AddTorque(UnityEngine.Random.Range(-100f, 100f));
                 
                 await Awaitable.WaitForSecondsAsync(1.0f);
                 
-                float wobbleForce3 = Random.Range(1f,3f);
+                float wobbleForce3 = UnityEngine.Random.Range(1f,3f);
                 murderBotbody.linearVelocity = Vector2.up * wobbleForce3;
-                murderBotbody.AddTorque(Random.Range(-100f, 100f));
+                murderBotbody.AddTorque(UnityEngine.Random.Range(-100f, 100f));
               
                 await Awaitable.WaitForSecondsAsync(2.0f); 
                 transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -85,15 +90,17 @@ public class muderbotmovement : MonoBehaviour
 
                 
         }
-        else if (!isWobbling && !isDead)
+        //float Abvalue = Math.Abs(target.position.x) - Math.Abs(transform.position.x);
+        float difference = Vector3.Distance(playerT.position, botT.position);
+        if (!isWobbling && !isDead && (difference > 2))
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
 
-        if (isWobbling == false)
+        if (isWobbling == false && (difference > 1.8))
         {
             animator.SetBool("isMwalking",true);
-            
+            Debug.Log (difference);
         }
         else
         {

@@ -10,7 +10,6 @@ public class playerattack : MonoBehaviour
    [SerializeField] private Animator animator;
    private float timer = 0f;
    [SerializeField] public PlayerMovement playerMovement;
-   bool Iswobbling;
    float movement;
 
     void Start()
@@ -21,15 +20,17 @@ public class playerattack : MonoBehaviour
 
     void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && playerMovement.isWobbling == false)
         {
             attack();
         }
         if (attacking)
         {
             timer += Time.deltaTime;
-
+            if(playerMovement.isWobbling == true)
+            {
+                timer = 0;
+            }
             if(timer >= timeToAttack)
             {
                 timer = 0;
