@@ -853,9 +853,9 @@ PolygonCollider2D:
       - {x: -0.8319798, y: -0.29687673}
       - {x: -0.8226524, y: -0.8812552}
       - {x: -0.15865922, y: -0.9227537}
-      - {x: 1.6535649, y: -0.9126645}
-      - {x: 1.6688267, y: -0.29320592}
-      - {x: 1.6610996, y: 0.37778133}
+      - {x: 1.4204351, y: -0.91208106}
+      - {x: 1.4301674, y: -0.29260862}
+      - {x: 1.4279293, y: 0.36394548}
   m_UseDelaunayMesh: 1
 --- !u!114 &273468882
 MonoBehaviour:
@@ -869,8 +869,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22511099a500ae47ac7f3b8bb226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::attackarea
-  damage: 2
   angle: 0
+  damage: 2147483647
 --- !u!1 &491095279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,7 +1233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc7511ab08085934e8dd8135220193ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  health: 4
+  health: 100
 --- !u!1 &925523855
 GameObject:
   m_ObjectHideFlags: 0

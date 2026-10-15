@@ -12,6 +12,7 @@ public class muderbotmovement : MonoBehaviour
     [SerializeField] private Animator animator;
     bool isWobbling = false;
     bool isDead = false;
+    bool wobbledeadfix = false;
     float difference;
     bool flip = true;
     public Transform playerT;
@@ -83,16 +84,25 @@ public class muderbotmovement : MonoBehaviour
                 murderBotbody.AddTorque(UnityEngine.Random.Range(-100f, 100f));
               
                 await Awaitable.WaitForSecondsAsync(2.0f); 
-                transform.rotation = Quaternion.Euler(0, 0, 0);
+                wobbledeadfix = true;
 
                 isWobbling = false;
             }
 
                 
         }
+        if(H.health <= 0)
+        {
+          isDead = true;  
+        }
+        if (wobbledeadfix == true && isDead == false)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            wobbledeadfix = false;
+        }
         //float Abvalue = Math.Abs(target.position.x) - Math.Abs(transform.position.x);
         float difference = Vector3.Distance(playerT.position, botT.position);
-        if (!isWobbling && !isDead && (difference > 2))
+        if (!isWobbling && !isDead && (difference > 1.5))
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
@@ -100,7 +110,6 @@ public class muderbotmovement : MonoBehaviour
         if (isWobbling == false && (difference > 1.8))
         {
             animator.SetBool("isMwalking",true);
-            Debug.Log (difference);
         }
         else
         {
