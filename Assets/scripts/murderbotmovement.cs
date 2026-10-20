@@ -4,13 +4,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class muderbotmovement : MonoBehaviour
+public class murderbotmovement : MonoBehaviour
 {
     public Rigidbody2D murderBotbody;
     public float speed;
     public float angle;
     [SerializeField] private Animator animator;
-    bool isWobbling = false;
+    public bool isWobbling = false;
     bool isDead = false;
     bool wobbledeadfix = false;
     float difference;
@@ -66,7 +66,7 @@ public class muderbotmovement : MonoBehaviour
             
             {
                 isWobbling = true;
-
+                animator.SetBool("is1punching",false);
                 float wobbleForce = UnityEngine.Random.Range(1f,3f);
                 murderBotbody.linearVelocity = Vector2.up * wobbleForce;
                 murderBotbody.AddTorque(UnityEngine.Random.Range(-100f, 100f));

@@ -870,7 +870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::attackarea
   angle: 0
-  damage: 2147483647
+  damage: 2
 --- !u!1 &491095279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,6 +1025,7 @@ GameObject:
   - component: {fileID: 757837940}
   - component: {fileID: 757837939}
   - component: {fileID: 757837946}
+  - component: {fileID: 757837947}
   m_Layer: 0
   m_Name: murderbotv1_0
   m_TagString: Untagged
@@ -1070,6 +1071,7 @@ MonoBehaviour:
   speed: 3.5
   angle: 0
   animator: {fileID: 757837939}
+  isWobbling: 0
   playerT: {fileID: 1550374965}
   botT: {fileID: 757837944}
   spriteRenderer: {fileID: 757837943}
@@ -1233,7 +1235,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc7511ab08085934e8dd8135220193ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  health: 100
+  health: 4
+--- !u!114 &757837947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757837938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2542350c206fdff469bdf67a572690e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  animator: {fileID: 0}
+  murderbotMovement: {fileID: 0}
 --- !u!1 &925523855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,6 +1373,7 @@ GameObject:
   - component: {fileID: 1550374961}
   - component: {fileID: 1550374960}
   - component: {fileID: 1550374966}
+  - component: {fileID: 1550374967}
   m_Layer: 0
   m_Name: scrappy_0
   m_TagString: Player
@@ -1568,6 +1585,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::playerattack
   animator: {fileID: 1550374960}
   playerMovement: {fileID: 1550374961}
+--- !u!114 &1550374967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550374959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76d5e7685b023e44b0a156820e732f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  health: 4
 --- !u!1 &1695585866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,7 +1821,7 @@ Transform:
   m_GameObject: {fileID: 1898056028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.68, y: -0.37, z: 0}
+  m_LocalPosition: {x: -0.2, y: -0.37, z: 0}
   m_LocalScale: {x: -42.38787, y: 31.82265, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
