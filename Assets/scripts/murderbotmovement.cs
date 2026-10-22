@@ -104,6 +104,7 @@ public class murderbotmovement : MonoBehaviour
         float difference = Vector3.Distance(playerT.position, botT.position);
         if (!isWobbling && !isDead && (difference > 1.5))
         {
+            Debug.Log("walk");
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
 

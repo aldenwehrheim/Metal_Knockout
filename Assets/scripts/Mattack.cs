@@ -11,6 +11,9 @@ public class Mattack : MonoBehaviour
    private float timer = 0f;
    public murderbotmovement murderbotMovement;
    float movement;
+   public Transform playerT;
+   public Transform botT;
+    
 
     void Start()
     {
@@ -20,7 +23,8 @@ public class Mattack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && murderbotMovement.isWobbling == false)
+        float difference = Vector3.Distance(playerT.position, botT.position);
+        if (((difference <= 1.5) || Input.GetKeyDown(KeyCode.F)) && murderbotMovement.isWobbling == false)
         {
             attack();
         }
@@ -36,7 +40,7 @@ public class Mattack : MonoBehaviour
                 timer = 0;
                 attacking = false;
                 attackArea.SetActive(attacking);
-                animator.SetBool("isMattacking",false);
+                animator.SetBool("isMattattacking",false);
             }
         }
     }
@@ -44,6 +48,6 @@ public class Mattack : MonoBehaviour
     {
         attacking = true;
         attackArea.SetActive(attacking);
-        animator.SetBool("isMattacking",true);
+        animator.SetBool("isMattattacking",true);
     }
 }       
