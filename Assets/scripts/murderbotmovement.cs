@@ -66,7 +66,6 @@ public class murderbotmovement : MonoBehaviour
             
             {
                 isWobbling = true;
-                animator.SetBool("is1punching",false);
                 float wobbleForce = UnityEngine.Random.Range(1f,3f);
                 murderBotbody.linearVelocity = Vector2.up * wobbleForce;
                 murderBotbody.AddTorque(UnityEngine.Random.Range(-100f, 100f));
@@ -111,6 +110,7 @@ public class murderbotmovement : MonoBehaviour
         if (isWobbling == false && (difference > 1.8))
         {
             animator.SetBool("isMwalking",true);
+            
         }
         else
         {

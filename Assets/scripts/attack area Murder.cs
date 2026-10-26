@@ -9,7 +9,7 @@ using JetBrains.Annotations;
 public class attackareaMurder : MonoBehaviour
 {
     public float angle;
-    [SerializeField] int damage = 10;
+    [SerializeField] int damage = 1;
     private void Update()
     {
         GameObject target = GameObject.Find("murderbotv1_0");
@@ -38,10 +38,10 @@ public class attackareaMurder : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.GetComponent<Health>() != null)
+        if(collider.GetComponent<Health_player>() != null)
         {
             
-            Health H = collider.GetComponent<Health>();
+            Health_player H = collider.GetComponent<Health_player>();
             H.Damage(damage);
             
             Rigidbody2D body = collider.GetComponent<Rigidbody2D>();

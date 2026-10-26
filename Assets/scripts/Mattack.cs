@@ -1,3 +1,4 @@
+using System.Threading;
 using NUnit.Framework;
 using Unity.Collections.Tests.CoreCLR.TestJobs;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class Mattack : MonoBehaviour
    private float timer = 0f;
    public murderbotmovement murderbotMovement;
    float movement;
+   [SerializeField] float cooldown;
    public Transform playerT;
    public Transform botT;
     
@@ -24,16 +26,20 @@ public class Mattack : MonoBehaviour
     void Update()
     {
         float difference = Vector3.Distance(playerT.position, botT.position);
-        if (((difference <= 1.5) || Input.GetKeyDown(KeyCode.F)) && murderbotMovement.isWobbling == false)
+    
+        if (cooldown == 0 && (difference <= 1.5 && murderbotMovement.isWobbling == false))
         {
             attack();
+            cooldown = 1000;
         }
         if (attacking)
         {
+            Debug.Log(cooldown + "cooldown left");
             timer += Time.deltaTime;
             if(murderbotMovement.isWobbling == true)
             {
                 timer = 0;
+                animator.SetBool("Mattacttacking", true);
             }
             if(timer >= timeToAttack)
             {
@@ -42,6 +48,15 @@ public class Mattack : MonoBehaviour
                 attackArea.SetActive(attacking);
                 animator.SetBool("isMattattacking",false);
             }
+        }
+    
+    if (cooldown != 0)
+        {
+         cooldown -= 1;
+         if(cooldown <= 0)
+            {
+                cooldown = 0;
+            }   
         }
     }
     private void attack()
