@@ -82,13 +82,15 @@ public class murderbotmovement : MonoBehaviour
                 murderBotbody.linearVelocity = Vector2.up * wobbleForce3;
                 murderBotbody.AddTorque(UnityEngine.Random.Range(-100f, 100f));
               
-<<<<<<< HEAD:Assets/scripts/muderbotmovement.cs
+
                 await Awaitable.WaitForSeconds(2.0f); 
                 transform.rotation = Quaternion.Euler(0, 0, 0);
-=======
+
                 await Awaitable.WaitForSecondsAsync(2.0f); 
                 wobbledeadfix = true;
->>>>>>> 7bd4e8fc0e707bfa290e75b651b72f2794e88cc1:Assets/scripts/murderbotmovement.cs
+                await Awaitable.WaitForSecondsAsync(2.0f); 
+                wobbledeadfix = true;
+
 
                 isWobbling = false;
             }
@@ -108,12 +110,11 @@ public class murderbotmovement : MonoBehaviour
         float difference = Vector3.Distance(playerT.position, botT.position);
         if (!isWobbling && !isDead && (difference > 1.5))
         {
-<<<<<<< HEAD:Assets/scripts/muderbotmovement.cs
+
             transform.position.x = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-=======
+
             Debug.Log("walk");
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
->>>>>>> 7bd4e8fc0e707bfa290e75b651b72f2794e88cc1:Assets/scripts/murderbotmovement.cs
         }
 Async
         if (isWobbling == false && (difference > 1.8))
