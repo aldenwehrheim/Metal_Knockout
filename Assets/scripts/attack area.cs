@@ -8,8 +8,8 @@ using JetBrains.Annotations;
 
 public class attackarea : MonoBehaviour
 {
-    public int damage = 1;
     public float angle;
+    [SerializeField] int damage = 10;
     private void Update()
     {
         GameObject target = GameObject.Find("scrappy_0");
@@ -40,6 +40,7 @@ public class attackarea : MonoBehaviour
     {
         if(collider.GetComponent<Health>() != null)
         {
+            
             Health H = collider.GetComponent<Health>();
             H.Damage(damage);
             
