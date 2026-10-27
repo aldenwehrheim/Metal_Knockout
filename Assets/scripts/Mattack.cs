@@ -30,16 +30,16 @@ public class Mattack : MonoBehaviour
         if (cooldown == 0 && (difference <= 1.5 && murderbotMovement.isWobbling == false))
         {
             attack();
-            cooldown = 1000;
+            cooldown = 200;
         }
         if (attacking)
         {
             Debug.Log(cooldown + "cooldown left");
             timer += Time.deltaTime;
+            animator.SetBool("isMattattacking",true);
             if(murderbotMovement.isWobbling == true)
             {
                 timer = 0;
-                animator.SetBool("Mattacttacking", true);
             }
             if(timer >= timeToAttack)
             {
@@ -63,6 +63,5 @@ public class Mattack : MonoBehaviour
     {
         attacking = true;
         attackArea.SetActive(attacking);
-        animator.SetBool("isMattattacking",true);
     }
 }       

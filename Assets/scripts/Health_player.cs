@@ -40,7 +40,7 @@ public class Health_player : MonoBehaviour
        
        health -= damage;
        iframes_on = true;
-       iframes = 200;
+       iframes = 300;
        Debug.Log("you took " + damage + " damage");
        if(health <= 0)
         {

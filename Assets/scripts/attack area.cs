@@ -9,7 +9,7 @@ using JetBrains.Annotations;
 public class attackarea : MonoBehaviour
 {
     public float angle;
-    [SerializeField] int damage = 10;
+    [SerializeField] int damage = 1;
     private void Update()
     {
         GameObject target = GameObject.Find("scrappy_0");

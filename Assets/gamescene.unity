@@ -888,7 +888,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &473812719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -902,7 +902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::attackareaMurder
   angle: 0
-  damage: 10
+  damage: 1
 --- !u!4 &473812720
 Transform:
   m_ObjectHideFlags: 0
@@ -1209,7 +1209,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.04175514, y: -0.009172916}
+  m_Offset: {x: 0.034097165, y: -0.009172916}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1219,7 +1219,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.2250752, y: 5.8941956}
+  m_Size: {x: 1.99276, y: 5.8941956}
   m_EdgeRadius: 0
 --- !u!50 &757837942
 Rigidbody2D:
@@ -1317,7 +1317,7 @@ Transform:
   m_GameObject: {fileID: 757837938}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.01, y: 1.63, z: 0}
+  m_LocalPosition: {x: 4.96, y: 1.63, z: 0}
   m_LocalScale: {x: 0.417, y: 0.455, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1351,7 +1351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Mattack
   animator: {fileID: 757837939}
   murderbotMovement: {fileID: 757837940}
-  cooldown: 0
+  cooldown: 3
   playerT: {fileID: 1550374965}
   botT: {fileID: 757837944}
 --- !u!1 &925523855
@@ -1668,7 +1668,7 @@ Transform:
   m_GameObject: {fileID: 1550374959}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.0009929981, w: 0.9999995}
-  m_LocalPosition: {x: -6.71, y: 1.83, z: 0}
+  m_LocalPosition: {x: -4.83, y: 1.83, z: 0}
   m_LocalScale: {x: 0.4221407, y: 0.455, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

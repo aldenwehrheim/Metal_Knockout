@@ -20,17 +20,13 @@ public class attackareaMurder : MonoBehaviour
      if (SR == null)
         {
             Debug.Log("null");
-        }
-     if (SR.flipX == false || true)
+         }
+    
+     if(SR.flipX == false)
         {
-            Debug.Log("connected?");
+         PC.offset = new Vector2(1.75f,0f);   
         }
-     if(SR.flipX == true)
-        {
-         PC.offset = new Vector2(4f,0f);   
-         Tf.rotation = Quaternion.Euler(0,180,0);
-        }
-        else
+    if (SR.flipX == true)
         {
           PC.offset = new Vector2(0f,0f);   
           Tf.rotation = Quaternion.Euler(0,0,0);  
@@ -50,7 +46,7 @@ public class attackareaMurder : MonoBehaviour
                 if (body != null)
                  {   
                     body.AddTorque(Random.Range(-100f, 100f));
-                    body.linearVelocity = new Vector2(10f, 5f);
+                    body.linearVelocity = new Vector3(10000f, 10000f, 1000f);
                  }   
         }
     }       

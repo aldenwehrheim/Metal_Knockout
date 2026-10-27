@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float angle;
     public float input;
-  
+    bool isDead = false;
     private float timer = 0f;
 
     [SerializeField] private Animator animator;
@@ -20,8 +20,15 @@ public class PlayerMovement : MonoBehaviour
 
  async void Update()
     {
+     if (!isDead)
+      {
+        Health_player H = GetComponent<Health_player>();
         angle = transform.eulerAngles.z;
-        
+        if(H.health <= 0)
+        {
+          isDead = true;  
+          animator.SetBool("is_Dead",true);
+        }
         if (!isWobbling)
         {
             input = Input.GetAxisRaw("Horizontal");
@@ -37,12 +44,13 @@ public class PlayerMovement : MonoBehaviour
         }
             angle = transform.eulerAngles.z;
         
-        if (!isWobbling && (angle >= 80 && angle <= 100 || angle >= 260 && angle <= 280))
+        if (!isDead && !isWobbling && (angle >= 80 && angle <= 100 || angle >= 260 && angle <= 280))
         {
             isWobbling = true;
             animator.SetBool("iswalking",false);
             input = 0;
             animator.SetBool("is1punching",false);
+            
             while (!Input.GetKeyDown(KeyCode.W))
             {
                 await Awaitable.NextFrameAsync();
@@ -91,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("iswalking",false);
         }
     }
-
+    }
 
     void FixedUpdate()
     {
