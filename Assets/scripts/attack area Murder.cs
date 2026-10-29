@@ -46,7 +46,7 @@ public class attackareaMurder : MonoBehaviour
                 if (body != null)
                  {   
                     body.AddTorque(Random.Range(-100f, 100f));
-                    body.linearVelocity = new Vector3(10000f, 10000f, 1000f);
+                    body.linearVelocity = new Vector2(10f, 5f);
                  }   
         }
     }       

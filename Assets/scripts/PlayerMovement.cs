@@ -20,6 +20,13 @@ public class PlayerMovement : MonoBehaviour
 
  async void Update()
     {
+    if (input != 0)
+        {
+            playerBody.linearVelocity = new Vector2 (input * speed, playerBody.linearVelocity.y);
+            
+        }
+    
+
      if (!isDead)
       {
         Health_player H = GetComponent<Health_player>();
@@ -103,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        playerBody.linearVelocity = new Vector2 (input * speed, playerBody.linearVelocity.y);
+        
         
     }
 
