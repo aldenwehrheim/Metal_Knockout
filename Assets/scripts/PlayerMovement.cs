@@ -1,4 +1,6 @@
+using System.Data.Common;
 using NUnit.Framework;
+using Unity.Collections.Tests.CoreCLR.TestJobs;
 using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -8,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float angle;
     public float input;
+    private bool isGrounded;
     bool isDead = false;
     private float timer = 0f;
 
@@ -20,12 +23,14 @@ public class PlayerMovement : MonoBehaviour
 
  async void Update()
     {
+    if (isGrounded == true)
+        {
+            Debug.Log ("grounded");
+        }
     if (input != 0)
         {
             playerBody.linearVelocity = new Vector2 (input * speed, playerBody.linearVelocity.y);
-            
         }
-    
 
      if (!isDead)
       {
@@ -105,14 +110,27 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("iswalking",false);
         }
-    }
-    }
-
-    void FixedUpdate()
-    {
-        
-        
+        }
     }
 
     
-}
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("ground"))
+        {
+            isGrounded = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("ground"))
+        {
+        isGrounded = false;
+        }
+    }
+     
+
+}        
+
+
+

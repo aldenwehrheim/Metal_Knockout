@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 117031236}
   m_Layer: 0
   m_Name: metal floor-1.png_0
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1317,7 +1317,7 @@ Transform:
   m_GameObject: {fileID: 757837938}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.93, y: 1.91, z: 0}
+  m_LocalPosition: {x: -4.93, y: 1.82, z: 0}
   m_LocalScale: {x: 0.417, y: 0.455, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
