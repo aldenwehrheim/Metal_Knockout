@@ -9,6 +9,8 @@ using JetBrains.Annotations;
 public class attackareaMurder : MonoBehaviour
 {
     public float angle;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    
     [SerializeField] int damage = 1;
     private void Update()
     {
@@ -46,7 +48,14 @@ public class attackareaMurder : MonoBehaviour
                 if (body != null)
                  {   
                     body.AddTorque(Random.Range(-100f, 100f));
-                    body.linearVelocity = new Vector2(10f, 5f);
+                    if (spriteRenderer.flipX == true)
+                    {
+                        body.linearVelocity = new Vector2(-20f, -10f);
+                    }
+                    if (spriteRenderer.flipX == false)
+                    {
+                        body.linearVelocity = new Vector2(20f, 10f);
+                    }
                  }   
         }
     }       

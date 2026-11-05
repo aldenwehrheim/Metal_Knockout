@@ -19,12 +19,12 @@ public class Health : MonoBehaviour
           if (iframes <= 0)
             {
               iframes_on = false;
-              Debug.Log("murderbot has no more iframes");
+              //Debug.Log("murderbot has no more iframes");
             }
             else
             {
               iframes -= 1;
-              Debug.Log("murderbot has " + iframes + " iframes left");
+              //Debug.Log("murderbot has " + iframes + " iframes left");
             }
         }
     } 

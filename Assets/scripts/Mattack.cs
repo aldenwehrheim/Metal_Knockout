@@ -12,6 +12,7 @@ public class Mattack : MonoBehaviour
    private float timer = 0f;
    public murderbotmovement murderbotMovement;
    float movement;
+   [SerializeField] private float Cooldown;
    [SerializeField] float cooldown;
    public Transform playerT;
    public Transform botT;
@@ -30,11 +31,11 @@ public class Mattack : MonoBehaviour
         if (cooldown == 0 && (difference <= 1.5 && murderbotMovement.isWobbling == false))
         {
             attack();
-            cooldown = 200;
+            cooldown += Cooldown;
         }
         if (attacking)
         {
-            Debug.Log(cooldown + "cooldown left");
+            //Debug.Log(cooldown + "cooldown left");
             timer += Time.deltaTime;
             animator.SetBool("isMattattacking",true);
             if(murderbotMovement.isWobbling == true)

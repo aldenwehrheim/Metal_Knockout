@@ -18,12 +18,12 @@ public class Health_player : MonoBehaviour
           if (iframes <= 0)
             {
               iframes_on = false;
-              Debug.Log("player has no more iframes");
+              //Debug.Log("player has no more iframes");
             }
             else
             {
               iframes -= 1;
-              Debug.Log("player has " + iframes + " iframes left");
+              //Debug.Log("player has " + iframes + " iframes left");
             }
         }
     } 

@@ -12,22 +12,32 @@ public class PlayerMovement : MonoBehaviour
     public float input;
     private bool isGrounded;
     bool isDead = false;
+    [SerializeField] private float slow = 8f;
     private float timer = 0f;
 
     [SerializeField] private Animator animator;
+    [SerializeField] private Rigidbody2D rigidbody2D;
 
     public bool isWobbling = false;
 
     public SpriteRenderer spriteRenderer;
-    
 
- async void Update()
+ 
+    async void Update()
     {
+    Rigidbody2D rb = GetComponent<Rigidbody2D>();
+    
     if (isGrounded == true)
         {
+            rb.linearDamping = slow;
             Debug.Log ("grounded");
         }
-    if (input != 0)
+    if (isGrounded == false)
+        {
+            rb.linearDamping = 0f;
+            Debug.Log ("notgrounded");
+        }
+    if (input != 0 )
         {
             playerBody.linearVelocity = new Vector2 (input * speed, playerBody.linearVelocity.y);
         }
