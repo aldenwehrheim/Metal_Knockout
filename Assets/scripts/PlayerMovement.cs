@@ -1,6 +1,9 @@
+using System;
 using System.Data.Common;
+using System.Numerics;
 using NUnit.Framework;
 using Unity.Collections.Tests.CoreCLR.TestJobs;
+using Unity.VisualScripting;
 using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -15,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float slow = 8f;
     private float timer = 0f;
 
+    [SerializeField] public float respawn_location_X = Convert.ToSingle(-7.48);
+    [SerializeField] public float respawn_location_Y = Convert.ToSingle(1.82);
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rigidbody2D;
 
@@ -26,7 +31,13 @@ public class PlayerMovement : MonoBehaviour
     async void Update()
     {
     Rigidbody2D rb = GetComponent<Rigidbody2D>();
-    
+    Transform position = GetComponent<Transform>();
+    //if (Input.GetKeyDown(KeyCode.R))
+        //{
+            //isDead = false;
+            //position.position = new UnityEngine.Vector2 (respawn_location_X, respawn_location_Y);
+            //animator.SetBool("is_Dead",false);
+        //}
     if (isGrounded == true)
         {
             rb.linearDamping = slow;
@@ -39,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         }
     if (input != 0 )
         {
-            playerBody.linearVelocity = new Vector2 (input * speed, playerBody.linearVelocity.y);
+            playerBody.linearVelocity = new UnityEngine.Vector2 (input * speed, playerBody.linearVelocity.y);
         }
 
      if (!isDead)
@@ -78,9 +89,9 @@ public class PlayerMovement : MonoBehaviour
                 await Awaitable.NextFrameAsync();
             }
                 animator.SetBool("is1punching",false);
-                float wobbleForce = Random.Range(1f,3f);
-                playerBody.linearVelocity = Vector2.up * wobbleForce;
-                playerBody.AddTorque(Random.Range(-100f, 100f));
+                float wobbleForce = UnityEngine.Random.Range(1f,3f);
+                playerBody.linearVelocity = UnityEngine.Vector2.up * wobbleForce;
+                playerBody.AddTorque(UnityEngine.Random.Range(-100f, 100f));
 
                     await Awaitable.WaitForSecondsAsync(.5f);
                 animator.SetBool("iswalking",false);
@@ -89,9 +100,9 @@ public class PlayerMovement : MonoBehaviour
                     await Awaitable.NextFrameAsync();
                 }
                 animator.SetBool("iswalking",false);
-                float wobbleForce2 = Random.Range(1f,3f);
-                playerBody.linearVelocity = Vector2.up * wobbleForce2;
-                playerBody.AddTorque(Random.Range(-100f, 100f));
+                float wobbleForce2 = UnityEngine.Random.Range(1f,3f);
+                playerBody.linearVelocity = UnityEngine.Vector2.up * wobbleForce2;
+                playerBody.AddTorque(UnityEngine.Random.Range(-100f, 100f));
                 animator.SetBool("is1punching",false);
                     await Awaitable.WaitForSecondsAsync(.5f);
             
@@ -100,13 +111,13 @@ public class PlayerMovement : MonoBehaviour
                     await Awaitable.NextFrameAsync();
                 }
                 
-                float wobbleForce3 = Random.Range(1f,3f);
-                playerBody.linearVelocity = Vector2.up * wobbleForce3;
-                playerBody.AddTorque(Random.Range(-100f, 100f));
+                float wobbleForce3 = UnityEngine.Random.Range(1f,3f);
+                playerBody.linearVelocity = UnityEngine.Vector2.up * wobbleForce3;
+                playerBody.AddTorque(UnityEngine.Random.Range(-100f, 100f));
 
                     await Awaitable.WaitForSecondsAsync(.5f);
 
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = UnityEngine.Quaternion.Euler(0, 0, 0);
 
             isWobbling = false;
         }

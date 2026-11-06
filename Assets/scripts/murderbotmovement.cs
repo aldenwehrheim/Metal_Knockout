@@ -14,12 +14,14 @@ public class murderbotmovement : MonoBehaviour
     bool isDead = false;
     bool wobbledeadfix = false;
     float difference;
+    [SerializeField] public float respawn_location_X = Convert.ToSingle(7.62);
+    [SerializeField] public float respawn_location_Y = Convert.ToSingle(1.49);
     bool flip = true;
     public Transform playerT;
     public Transform botT;
     
     public SpriteRenderer spriteRenderer;
-    
+    public GameObject object_that_will_Clone;
 
     private Transform target;
 
@@ -32,6 +34,14 @@ public class murderbotmovement : MonoBehaviour
 
     async void Update()
     {
+        Transform position = GetComponent<Transform>();
+    //if (Input.GetKeyDown(KeyCode.R))
+        //{
+            //isDead = false;
+            //position.position = new UnityEngine.Vector2 (respawn_location_X, respawn_location_Y);
+            //animator.SetBool("is_Dead",false);
+        //}
+
         Transform M_pos = GetComponent<Transform>();
         //Debug.Log("M_pos is " +M_pos.position.x);
         GameObject Target = GameObject.Find("scrappy_0");
@@ -40,7 +50,8 @@ public class murderbotmovement : MonoBehaviour
         Transform Tf = gameObject.transform;
         if(H.health <= 0)
         {
-          isDead = true;  
+          isDead = true;
+          //GameObject Nextmurderbot = Instantiate(object_that_will_Clone, new Vector3(0, 1));
         }
         if (POS.TryGetComponent<Transform> (out Transform pos))
         {

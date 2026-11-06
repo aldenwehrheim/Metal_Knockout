@@ -12,6 +12,10 @@ public class Health : MonoBehaviour
    private Animator animator;
     public void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            health = 4;
+        }
         if (iframes_on == true)
         {
           // it checks every update if iframes is on 

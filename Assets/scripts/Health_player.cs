@@ -11,6 +11,10 @@ public class Health_player : MonoBehaviour
    // both iframes are for turning iframes on and then counting the frames
     public void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+    {
+      health = 4;
+    }
         if (iframes_on == true)
         {
           // it checks every update if iframes is on 
