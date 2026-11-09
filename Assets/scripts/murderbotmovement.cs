@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -11,6 +12,7 @@ public class murderbotmovement : MonoBehaviour
     public float angle;
     [SerializeField] private Animator animator;
     public bool isWobbling = false;
+    private bool reset = false;
     bool isDead = false;
     bool wobbledeadfix = false;
     float difference;
@@ -19,10 +21,8 @@ public class murderbotmovement : MonoBehaviour
     bool flip = true;
     public Transform playerT;
     public Transform botT;
-    
     public SpriteRenderer spriteRenderer;
     public GameObject object_that_will_Clone;
-
     private Transform target;
 
     void Start()
@@ -34,41 +34,54 @@ public class murderbotmovement : MonoBehaviour
 
     async void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.LogWarning("make a thing that adds reset positoin");
+            //make a thing that adds reset positoin
+            Reset();
+        }
+        
         Transform position = GetComponent<Transform>();
-    //if (Input.GetKeyDown(KeyCode.R))
-        //{
-            //isDead = false;
-            //position.position = new UnityEngine.Vector2 (respawn_location_X, respawn_location_Y);
-            //animator.SetBool("is_Dead",false);
-        //}
-
         Transform M_pos = GetComponent<Transform>();
-        //Debug.Log("M_pos is " +M_pos.position.x);
+        Health H = GetComponent<Health>();
         GameObject Target = GameObject.Find("scrappy_0");
         var POS = Target.GetComponent<Transform>();
-        Health H = GetComponent<Health>();
         Transform Tf = gameObject.transform;
+        angle = transform.eulerAngles.z;
+
+        //Debug.Log("M_pos is " +M_pos.position.x);
+        if (reset == true)
+        {
+            H.health = 4;
+            animator.SetBool("isMdead",false);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            reset = false;
+        }
+
         if(H.health <= 0)
         {
           isDead = true;
+          animator.SetBool("isMdead",true);
           //GameObject Nextmurderbot = Instantiate(object_that_will_Clone, new Vector3(0, 1));
         }
+
         if (POS.TryGetComponent<Transform> (out Transform pos))
         {
             float playerX = pos.position.x;
             float botX = M_pos.position.x;
-            if((playerX > 0 && botX > playerX)||(playerX < 0 && botX > playerX))
+
+        if ((playerX > 0 && botX > playerX)||(playerX < 0 && botX > playerX))
             {
                 //no flip
                 spriteRenderer.flipX = true;
             }
-            else if ((playerX < 0 && botX < playerX)||(playerX > 0 && botX < playerX))
+        
+        else if ((playerX < 0 && botX < playerX)||(playerX > 0 && botX < playerX))
             {
                 // yes flip
                 spriteRenderer.flipX = false;
             }
         }
-        angle = transform.eulerAngles.z;
 
         if (!isDead && (angle >= 60 && angle <= 80 || angle >= 260 && angle <= 280))
         {
@@ -102,10 +115,22 @@ public class murderbotmovement : MonoBehaviour
 
                 
         }
+        
+        if (reset == true)
+        {
+            H.health = 4;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            animator.SetBool("isMdead",false);
+            reset = false;
+        }
+
         if(H.health <= 0)
         {
-          isDead = true;  
+          isDead = true;
+          animator.SetBool("isMdead",true);
+          //GameObject Nextmurderbot = Instantiate(object_that_will_Clone, new Vector3(0, 1));
         }
+        
         if (wobbledeadfix == true && isDead == false)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -129,8 +154,13 @@ public class murderbotmovement : MonoBehaviour
         if (isDead == true)
         {
             animator.SetBool("isMwalking",false);
-            animator.SetBool("isMdead",true);
         }
+    }
+    void Reset()
+    {
+        isDead = false;
+        reset = true;
+        animator.SetBool("isMdead",false);
     }
 
 }
