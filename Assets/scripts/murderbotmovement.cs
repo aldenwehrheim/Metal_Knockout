@@ -16,42 +16,60 @@ public class murderbotmovement : MonoBehaviour
     bool isDead = false;
     bool wobbledeadfix = false;
     float difference;
-    [SerializeField] public float respawn_location_X = Convert.ToSingle(7.62);
-    [SerializeField] public float respawn_location_Y = Convert.ToSingle(1.49);
+    [SerializeField] public Vector2 respawn_location;
+    [SerializeField] public bool respawn = false;
     bool flip = true;
     public Transform playerT;
     public Transform botT;
     public SpriteRenderer spriteRenderer;
     public GameObject object_that_will_Clone;
     private Transform target;
+    private Vector2 respawnSpot;
 
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         Health H = GetComponent<Health>();
         animator.SetBool("isMdead",false);
+        
+        respawnSpot = murderBotbody.position;
+
+        if (respawn == true)
+        {
+            transform.position = respawn_location;
+        }
     }
 
     async void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Debug.LogWarning("make a thing that adds reset positoin");
-            //make a thing that adds reset positoin
             Reset();
         }
         
         Transform position = GetComponent<Transform>();
-        Transform M_pos = GetComponent<Transform>();
         Health H = GetComponent<Health>();
         GameObject Target = GameObject.Find("scrappy_0");
         var POS = Target.GetComponent<Transform>();
         Transform Tf = gameObject.transform;
         angle = transform.eulerAngles.z;
 
-        //Debug.Log("M_pos is " +M_pos.position.x);
+        //Debug.Log("bot position is " + position.position.x);
         if (reset == true)
         {
+            //Debug.Log("bot velocity is " + murderBotbody.linearVelocity);
+            isWobbling = false;
+            murderBotbody.linearVelocity = new Vector3(0f, 0f, 0f);
+            murderBotbody.angularVelocity = 0f;
+            //transform.position = new Vector2(7.6f , 1.5f);
+            if (respawn == false)
+            {
+                transform.position = respawnSpot;
+            }
+            else if (respawn == true)
+            {
+                transform.position = respawn_location;
+            }
             H.health = 4;
             animator.SetBool("isMdead",false);
             transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -68,7 +86,7 @@ public class murderbotmovement : MonoBehaviour
         if (POS.TryGetComponent<Transform> (out Transform pos))
         {
             float playerX = pos.position.x;
-            float botX = M_pos.position.x;
+            float botX = position.position.x;
 
         if ((playerX > 0 && botX > playerX)||(playerX < 0 && botX > playerX))
             {
@@ -91,19 +109,19 @@ public class murderbotmovement : MonoBehaviour
             {
                 isWobbling = true;
                 float wobbleForce = UnityEngine.Random.Range(1f,3f);
-                murderBotbody.linearVelocity = Vector2.up * wobbleForce;
+                murderBotbody.linearVelocity += Vector2.up * wobbleForce;
                 murderBotbody.AddTorque(UnityEngine.Random.Range(-100f, 100f));
                 
                 await Awaitable.WaitForSecondsAsync(1.0f);
                 
                 float wobbleForce2 = UnityEngine.Random.Range(1f,3f);
-                murderBotbody.linearVelocity = Vector2.up * wobbleForce2;
+                murderBotbody.linearVelocity += Vector2.up * wobbleForce2;
                 murderBotbody.AddTorque(UnityEngine.Random.Range(-100f, 100f));
                 
                 await Awaitable.WaitForSecondsAsync(1.0f);
                 
                 float wobbleForce3 = UnityEngine.Random.Range(1f,3f);
-                murderBotbody.linearVelocity = Vector2.up * wobbleForce3;
+                murderBotbody.linearVelocity += Vector2.up * wobbleForce3;
                 murderBotbody.AddTorque(UnityEngine.Random.Range(-100f, 100f));
                
                 transform.rotation = Quaternion.Euler(0, 0, 0);

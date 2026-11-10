@@ -683,7 +683,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.01550436, y: 0.0123717785}
+  m_Offset: {x: -1.1196766, y: 0.0123717785}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -693,7 +693,7 @@ BoxCollider2D:
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 20.329277, y: 1.4826827}
+  m_Size: {x: 18.120934, y: 1.4826827}
   m_EdgeRadius: 0
 --- !u!212 &211092445
 SpriteRenderer:
@@ -1313,8 +1313,8 @@ MonoBehaviour:
   angle: 0
   animator: {fileID: 757837939}
   isWobbling: 0
-  respawn_location_X: 7.62
-  respawn_location_Y: 1.49
+  respawn_location: {x: 7, y: 1}
+  respawn: 1
   playerT: {fileID: 1550374965}
   botT: {fileID: 757837944}
   spriteRenderer: {fileID: 757837943}
@@ -1461,7 +1461,7 @@ Transform:
   m_GameObject: {fileID: 757837938}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.62, y: 1.49, z: 0}
+  m_LocalPosition: {x: 7.11, y: 12.14, z: 0}
   m_LocalScale: {x: 0.417, y: 0.455, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
