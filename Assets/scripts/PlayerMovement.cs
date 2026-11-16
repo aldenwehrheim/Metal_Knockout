@@ -13,31 +13,74 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float angle;
     public float input;
+     private bool reset = false;
     private bool isGrounded;
     bool isDead = false;
     [SerializeField] private float slow = 8f;
     private float timer = 0f;
 
-    [SerializeField] public float respawn_location_X = Convert.ToSingle(-7.48);
-    [SerializeField] public float respawn_location_Y = Convert.ToSingle(1.82);
+    [SerializeField] public UnityEngine.Vector2 respawn_location;
+    [SerializeField] public bool respawn = false;
+
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rigidbody2D;
-
+    private UnityEngine.Vector2 respawnSpot;
     public bool isWobbling = false;
-
     public SpriteRenderer spriteRenderer;
+    
+    void Start()
+    {
+        Health_player H = GetComponent<Health_player>();
+        animator.SetBool("is_Dead",false);
+        
+        respawnSpot = playerBody.position;
 
- 
+        if (respawn == true)
+        {
+            transform.position = respawn_location;
+        }
+    }
+
     async void Update()
     {
+    Health_player H = GetComponent<Health_player>();    
     Rigidbody2D rb = GetComponent<Rigidbody2D>();
     Transform position = GetComponent<Transform>();
-    //if (Input.GetKeyDown(KeyCode.R))
-        //{
-            //isDead = false;
-            //position.position = new UnityEngine.Vector2 (respawn_location_X, respawn_location_Y);
-            //animator.SetBool("is_Dead",false);
-        //}
+
+    if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reset();
+        }
+
+    if (reset == true)
+        {
+            animator.SetBool("is_Dead",false);
+            isWobbling = false;
+            playerBody.linearVelocity = new UnityEngine.Vector3(0f, 0f, 0f);
+            playerBody.angularVelocity = 0f;
+            //transform.position = new Vector2(7.6f , 1.5f);
+            if (respawn == false)
+            {
+                transform.position = respawnSpot;
+            }
+            else if (respawn == true)
+            {
+                transform.position = respawn_location;
+            }
+            H.health = 4;
+            animator.SetBool("is_Dead",false);
+            transform.rotation = UnityEngine.Quaternion.Euler(0, 0, 0);
+            animator.SetBool("is_Dead",false);
+            reset = false;
+        }
+
+    if(H.health <= 0)
+        {
+          isDead = true;
+          animator.SetBool("is_Dead",true);
+          //GameObject Nextmurderbot = Instantiate(object_that_will_Clone, new Vector3(0, 1));
+        }
+        
     if (isGrounded == true)
         {
             rb.linearDamping = slow;
@@ -55,13 +98,8 @@ public class PlayerMovement : MonoBehaviour
 
      if (!isDead)
       {
-        Health_player H = GetComponent<Health_player>();
         angle = transform.eulerAngles.z;
-        if(H.health <= 0)
-        {
-          isDead = true;  
-          animator.SetBool("is_Dead",true);
-        }
+
         if (!isWobbling)
         {
             input = Input.GetAxisRaw("Horizontal");
@@ -149,9 +187,14 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = false;
         }
     }
+    void Reset()
+    {
+        isDead = false;
+        reset = true;
+        animator.SetBool("is_Dead",false);
+    }
      
 
 }        
-
 
 

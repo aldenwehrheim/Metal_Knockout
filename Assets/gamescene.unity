@@ -1314,7 +1314,7 @@ MonoBehaviour:
   animator: {fileID: 757837939}
   isWobbling: 0
   respawn_location: {x: 7, y: 1}
-  respawn: 1
+  respawn: 0
   playerT: {fileID: 1550374965}
   botT: {fileID: 757837944}
   spriteRenderer: {fileID: 757837943}
@@ -1461,7 +1461,7 @@ Transform:
   m_GameObject: {fileID: 757837938}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.11, y: 12.14, z: 0}
+  m_LocalPosition: {x: 7.57, y: 1.45, z: 0}
   m_LocalScale: {x: 0.417, y: 0.455, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1669,8 +1669,8 @@ MonoBehaviour:
   angle: 0
   input: 0
   slow: 8
-  respawn_location_X: -7.48
-  respawn_location_Y: 1.82
+  respawn_location: {x: 0, y: 0}
+  respawn: 0
   animator: {fileID: 1550374960}
   rigidbody2D: {fileID: 1550374963}
   isWobbling: 0
@@ -1817,7 +1817,7 @@ Transform:
   m_GameObject: {fileID: 1550374959}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.0009929981, w: 0.9999995}
-  m_LocalPosition: {x: -7.48, y: 1.82, z: 0}
+  m_LocalPosition: {x: -7.02, y: 1.71, z: 0}
   m_LocalScale: {x: 0.4221407, y: 0.455, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
